@@ -32,6 +32,11 @@ then get length of array - will need to start with an array with items and then 
     document.onkeyup = function(event) {
         var userGuess = event.key;
 - If guess is incorrect, or correct, append letter to div below "_" and add 1 to turns
+- Remove item from array using splice() method
+- Will need 4 arrays: empty - for guesses, one with "__" for the display, one with the answers spelled out,
+and one with the amnswers in whole-word form. 
+- Random number generator will choose word to guess
+- Decide how and if function will end
 
 Variables:
 - turnCount - Number of turns
