@@ -23,6 +23,7 @@ and
     console.log(s[3]);
 then get length of array - will need to start with an array with items and then empty array
 - For each letter in word, print "_"
+- Append "__" to array for each letter in word
 - May need to format underscore
 - Every wrong guess - sound is played
 - Every correct solve - "Great Scott!"
@@ -41,5 +42,42 @@ and one with the amnswers in whole-word form.
 Variables:
 - turnCount - Number of turns
 - winCount - Number of wins
+*/
 
+
+<div id="start_button" onclick="start_game()">Start Game!</div>
+
+<div id="guess_area"></div>
+
+<div id="guessed_letters"></div>
+
+<div id="text_box"></div>
+
+<script>
+
+    var words = [];
+    var gameWord = [];
+    var baseSet = [];
+    var turnCount = 0;
+    var winCount = 0;
+
+    // Start game function
+
+        // Click button to start game
+        // Enter your guess will print in text_box
+        // Random word will be selected from array of words
+        // Split function will separate random word into letters in array
+        
+
+
+    // Guessing function
+
+        // Listen for key entered
+        // Save key to variable
+        // Compare key to letters in array
+        // If key in array, replace "__" with letter, add 1 to turnCount, add letter to guessed_letters
+        // If key is not in array, add 1 to turnCount
+    // Score function
+    // Restart game function
+</script>
 
