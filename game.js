@@ -60,6 +60,7 @@ Variables:
     var baseSet = [];
     var turnCount = 0;
     var winCount = 0;
+    var lossCount = 0;
 
     // Start game function
 
@@ -67,8 +68,9 @@ Variables:
         // Enter your guess will print in text_box
         // Random word will be selected from array of words
         // Split function will separate random word into letters in array
+        // Append "__" to empty array for length of selected word
+        // Diplay "__" array to guess_area
         
-
 
     // Guessing function
 
@@ -77,7 +79,16 @@ Variables:
         // Compare key to letters in array
         // If key in array, replace "__" with letter, add 1 to turnCount, add letter to guessed_letters
         // If key is not in array, add 1 to turnCount
+
+
     // Score function
+
+        // If gameWord === baseSet, player wins, add 1 to winCount
+        // If turnCount > 10, player loses, add 1 to lossCount, ask if player wants to play
+        again with button (maybe confirm)
+
     // Restart game function
+
+        // 
 </script>
 
