@@ -70,7 +70,11 @@ var lossCount = 0;
             console.log(baseSet);
 
         // Append "__" to empty array for length of selected word
-
+            for (var i = 0; i < baseSet.length; i++){
+                displaySet.push("__");
+                var dElement = document.getElementById("guess_area");
+                dElement.innerText = displaySet;
+            }
         // Diplay "__" array to guess_area
         
 
