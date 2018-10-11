@@ -45,23 +45,13 @@ Variables:
 */
 
 
-<div id="start_button" onclick="start_game()">Start Game!</div>
-
-<div id="guess_area"></div>
-
-<div id="guessed_letters"></div>
-
-<div id="text_box"></div>
-
-
-
-    var words = [DeLorean, Marty, Jigowatts, Biff, Doc, Skateboard,
-    Lorraine, George, Zemekis, Nike];
-    var gameWord;
-    var baseSet;
-    var turnCount = 0;
-    var winCount = 0;
-    var lossCount = 0;
+var words = [DeLorean, Marty, Jigowatts, Biff, Doc, Skateboard,
+Lorraine, George, Zemekis, Nike];
+var gameWord;
+var baseSet;
+var turnCount = 0;
+var winCount = 0;
+var lossCount = 0;
 
     // Start game function
 
