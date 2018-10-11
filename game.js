@@ -45,16 +45,19 @@ Variables:
 */
 
 
-var words = [DeLorean, Marty, Jigowatts, Biff, Doc, Skateboard,
-Lorraine, George, Zemekis, Nike];
+var words = ["DeLorean", "Marty", "Jigowatts", "Biff", "Doc", "Skateboard",
+"Lorraine", "George", "Zemekis", "Jennifer"];
 var gameWord;
 var baseSet;
+var displaySet = [];
 var turnCount = 0;
 var winCount = 0;
 var lossCount = 0;
 
     // Start game function
+    function start_game(){
 
+    
         // Click button to start game
         // Enter your guess will print in text_box
         // Random word will be selected from array of words
@@ -65,7 +68,9 @@ var lossCount = 0;
         // Split function will separate random word into letters in array
             var baseSet = gameWord.split('');
             console.log(baseSet);
+
         // Append "__" to empty array for length of selected word
+
         // Diplay "__" array to guess_area
         
 
@@ -87,5 +92,5 @@ var lossCount = 0;
     // Restart game function
 
         // 
-
+    }
 
