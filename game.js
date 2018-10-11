@@ -72,10 +72,15 @@ var lossCount = 0;
 
         // Append "__" to empty array for length of selected word and display "__" array to guess_area
             for (var i = 0; i < baseSet.length; i++){
+                console.log('getting here? ', i)
                 displaySet.push("___");
                 var dElement = document.getElementById("guess_area");
                 dElement.innerText = displaySet;
                 document.onkeyup = function(event) {
+                    if (turnCount >= 10) {
+                        console.log('should stop')
+                        return
+                    }
                     var userGuess = event.key;
                     turnCount++;
                     var cElement  = document.getElementById("turns");
@@ -83,12 +88,18 @@ var lossCount = 0;
                     console.log(userGuess);
                     if (baseSet.includes(userGuess)){
                         var position = baseSet.indexOf(userGuess);
+                        console.log('position before: ', position)
+                        console.log('displaySet before: ', displaySet)
                         displaySet.splice(position, 1, userGuess);
+                        console.log('displaySet after: ', displaySet)
+
                         var dElement = document.getElementById("guess_area");
                         dElement.innerText = displaySet;
-                        }
-                        else if (baseSet.includes(userGuess, position + 1)){
+                    }
+                        if (baseSet.includes(userGuess, position + 1)){
+                            console.log('position after? ', position)
                             var newPosition = baseSet.indexOf(userGuess,position + 1);
+                            console.log('newPosition? ', newPosition)
                             displaySet.splice(newPosition, 1, userGuess);
                             var dElement = document.getElementById("guess_area");
                             dElement.innerText = displaySet;
@@ -98,6 +109,7 @@ var lossCount = 0;
                             var cElement  = document.getElementById("turns");
                             cElement.innerText = turnCount;
                     }
+                    
                     }
             } 
         
