@@ -45,8 +45,8 @@ Variables:
 */
 
 
-var words = ["DeLorean", "Marty", "Jigowatts", "Biff", "Doc", "Skateboard",
-"Lorraine", "George", "Zemekis", "Jennifer"];
+var words = ["delorean", "marty", "jigowatts", "biff", "doc", "skateboard",
+"lorraine", "george", "zemekis", "jennifer"];
 var gameWord;
 var baseSet;
 var userGuess;
@@ -75,22 +75,58 @@ var lossCount = 0;
                 displaySet.push("___");
                 var dElement = document.getElementById("guess_area");
                 dElement.innerText = displaySet;
+                document.onkeyup = function(event) {
+                    var userGuess = event.key;
+                    turnCount++;
+                    var cElement  = document.getElementById("turns");
+                    cElement.innerText = turnCount;
+                    console.log(userGuess);
+                    if (baseSet.includes(userGuess)){
+                        var position = baseSet.indexOf(userGuess);
+                        displaySet.splice(position, 1, userGuess);
+                        var dElement = document.getElementById("guess_area");
+                        dElement.innerText = displaySet;
+                        }
+                        else if (baseSet.includes(userGuess, position + 1)){
+                            var newPosition = baseSet.indexOf(userGuess,position + 1);
+                            displaySet.splice(newPosition, 1, userGuess);
+                            var dElement = document.getElementById("guess_area");
+                            dElement.innerText = displaySet;
+                        }
+                        else {
+                            turnCount++;
+                            var cElement  = document.getElementById("turns");
+                            cElement.innerText = turnCount;
+                    }
+                    }
             } 
         
 
     // Guessing function
 
         // Listen for key entered
-            document.onkeyup = function(event) {
-                var userGuess = event.key;
-                console.log(userGuess);
-                if (baseSet.includes(userGuess)){
-                    var position = baseSet.indexOf(userGuess);
-                    displaySet.splice(position, 1, userGuess);
-                    var dElement = document.getElementById("guess_area");
-                    dElement.innerText = displaySet;
-
-                }
+            // document.onkeyup = function(event) {
+            //     var userGuess = event.key;
+            //     var cElement  = document.getElementById("turns");
+            //     cElement.innerText = turnCount;
+            //     console.log(userGuess);
+            //     if (baseSet.includes(userGuess)){
+            //         var position = baseSet.indexOf(userGuess);
+            //         displaySet.splice(position, 1, userGuess);
+            //         var dElement = document.getElementById("guess_area");
+            //         dElement.innerText = displaySet;
+            //         }
+            //         if (baseSet.indexOf(userGuess, position)){
+            //             displaySet.splice(position, 1, userGuess);
+            //             var dElement = document.getElementById("guess_area");
+            //             dElement.innerText = displaySet;
+            //         }
+            //     else {
+            //         turnCount++;
+            //         var cElement  = document.getElementById("turns");
+            //         cElement.innerText = turnCount;
+            //     }
+            //     }
 
         }
         // Save key to variable
@@ -102,11 +138,20 @@ var lossCount = 0;
     // Score function
 
         // If gameWord === baseSet, player wins, add 1 to winCount
+            if (displaySet === baseSet && turnCount <= 10){
+                var wElement = document.getElementById("text_area");
+                wElement.innerText = "You Win!";
+                } else if (turnCount > 10){
+                    var wElement = document.getElementById("text_area");
+                    wElement.innerText = "You Lose! Play Again?"; 
+            }
+
+            
         // If turnCount > 10, player loses, add 1 to lossCount, ask if player wants to play
         // again with button (maybe confirm)
 
     // Restart game function
 
         // 
-    }
+    
 
