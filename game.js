@@ -53,11 +53,12 @@ Variables:
 
 <div id="text_box"></div>
 
-<script>
 
-    var words = [];
-    var gameWord = [];
-    var baseSet = [];
+
+    var words = [DeLorean, Marty, Jigowatts, Biff, Doc, Skateboard,
+    Lorraine, George, Zemekis, Nike];
+    var gameWord;
+    var baseSet;
     var turnCount = 0;
     var winCount = 0;
     var lossCount = 0;
@@ -67,7 +68,13 @@ Variables:
         // Click button to start game
         // Enter your guess will print in text_box
         // Random word will be selected from array of words
+            var wordChoice = Math.floor((Math.random() * 9) + 1);
+            var gameWord = words[wordChoice];
+        
+
         // Split function will separate random word into letters in array
+            var baseSet = gameWord.split('');
+            console.log(baseSet);
         // Append "__" to empty array for length of selected word
         // Diplay "__" array to guess_area
         
@@ -85,10 +92,10 @@ Variables:
 
         // If gameWord === baseSet, player wins, add 1 to winCount
         // If turnCount > 10, player loses, add 1 to lossCount, ask if player wants to play
-        again with button (maybe confirm)
+        // again with button (maybe confirm)
 
     // Restart game function
 
         // 
-</script>
+
 
