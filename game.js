@@ -49,6 +49,7 @@ var words = ["DeLorean", "Marty", "Jigowatts", "Biff", "Doc", "Skateboard",
 "Lorraine", "George", "Zemekis", "Jennifer"];
 var gameWord;
 var baseSet;
+var userGuess;
 var displaySet = [];
 var turnCount = 0;
 var winCount = 0;
@@ -69,18 +70,29 @@ var lossCount = 0;
             var baseSet = gameWord.split('');
             console.log(baseSet);
 
-        // Append "__" to empty array for length of selected word
+        // Append "__" to empty array for length of selected word and display "__" array to guess_area
             for (var i = 0; i < baseSet.length; i++){
-                displaySet.push("__");
+                displaySet.push("___");
                 var dElement = document.getElementById("guess_area");
                 dElement.innerText = displaySet;
-            }
-        // Diplay "__" array to guess_area
+            } 
         
 
     // Guessing function
 
         // Listen for key entered
+            document.onkeyup = function(event) {
+                var userGuess = event.key;
+                console.log(userGuess);
+                if (baseSet.includes(userGuess)){
+                    var position = baseSet.indexOf(userGuess);
+                    displaySet.splice(position, 1, userGuess);
+                    var dElement = document.getElementById("guess_area");
+                    dElement.innerText = displaySet;
+
+                }
+
+        }
         // Save key to variable
         // Compare key to letters in array
         // If key in array, replace "__" with letter, add 1 to turnCount, add letter to guessed_letters
