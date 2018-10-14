@@ -71,7 +71,7 @@ function checkGame (word, dSet){
             var lossElement = document.getElementById("losses");
             lossElement.innerText = lossCount;
             var wElement = document.getElementById("text_box");
-            wElement.innerText = "You Lose! Press Start Game to play Again!";
+            wElement.innerText = "You Lose! Refresh page to play Again!";
         } else {
             return;
         }
