@@ -1,5 +1,10 @@
-/* html {
+@font-face {
+    font-family: "BTTF";
+    src: url("BTTF.ttf") format("truetype");
+}
+
+body {
     background-image: url("../images/806463-delorean-back-to-the-future-wallpaper-1920x1080-for-samsung-galaxy.jpg");
     background-size: cover;
-} */
+}
 
