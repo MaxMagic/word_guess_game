@@ -8,8 +8,18 @@ div {
     color: white;
 }
 
-body {
-    background-image: url("../images/806463-delorean-back-to-the-future-wallpaper-1920x1080-for-samsung-galaxy.jpg");
-    background-size: cover;
+body, html {
+    height: 100%;
+    margin: 0;
 }
 
+.bg {
+    /* The image used */
+    background-image: url("../images/806463-delorean-back-to-the-future-wallpaper-1920x1080-for-samsung-galaxy.jpg");
+
+    height: 100%; 
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
