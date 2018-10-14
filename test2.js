@@ -5,7 +5,6 @@ NBA?
 Back to the Future???? - This would be very cool
 - Back to the future background
 - Maybe include motion
-
 Outline:
 - Text will need to be written in divs
 - Will need to look up fonts for Back to the Future
@@ -19,7 +18,6 @@ Steps:
 }
 and
     var s = "overpopulation";
-
     console.log(s[3]);
 then get length of array - will need to start with an array with items and then empty array
 - For each letter in word, print "_"
@@ -38,7 +36,6 @@ then get length of array - will need to start with an array with items and then 
 and one with the amnswers in whole-word form. 
 - Random number generator will choose word to guess
 - Decide how and if function will end
-
 Variables:
 - turnCount - Number of turns
 - winCount - Number of wins
@@ -55,69 +52,65 @@ var turnCount = 0;
 var winCount = 0;
 var lossCount = 0;
 
-var wordChoice = Math.floor((Math.random() * 9) + 1);
-var gameWord = words[wordChoice];
-var baseSet = gameWord.split('');
-
     // Start game function
-    
+    function start_game(){
 
     
         // Click button to start game
         // Enter your guess will print in text_box
         // Random word will be selected from array of words
-            
+            var wordChoice = Math.floor((Math.random() * 9) + 1);
+            var gameWord = words[wordChoice];
         
 
         // Split function will separate random word into letters in array
-            
-    function start_game(){
+            var baseSet = gameWord.split('');
+            console.log(baseSet);
+
         // Append "__" to empty array for length of selected word and display "__" array to guess_area
             for (var i = 0; i < baseSet.length; i++){
                 displaySet.push("___");
                 var dElement = document.getElementById("guess_area");
                 dElement.innerText = displaySet;
-                var userGuess = event.key;
-                turnCount++;
                 document.onkeyup = function(event) {
-                    if (turnCount >= 10) {
-                        return
-                }
-        }}
-
-    function play_game(){
-        var cElement  = document.getElementById("turns");
-        cElement.innerText = turnCount;
-        console.log(userGuess);
-        if (baseSet.includes(userGuess)){
-            var position = baseSet.indexOf(userGuess);
-            displaySet.splice(position, 1, userGuess);
-            var dElement = document.getElementById("guess_area");
-            dElement.innerText = displaySet;
-        }
-        if (baseSet.includes(userGuess, position + 1)){
-            var newPosition = baseSet.indexOf(userGuess,position + 1);
-            displaySet.splice(newPosition, 1, userGuess);
-            var dElement = document.getElementById("guess_area");
-            dElement.innerText = displaySet;
-        } else {
-            turnCount++;
-            var cElement  = document.getElementById("turns");
-            cElement.innerText = turnCount;
-        }}
-                
-            
-    function end_game(){
-        if (displaySet === baseSet && turnCount <= 10){
-            var wElement = document.getElementById("text_area");
-            wElement.innerText = "You Win!";
-            } else if (turnCount > 10){
-                var wElement = document.getElementById("text_area");
-                wElement.innerText = "You Lose! Play Again?"; 
-        }}
-
-        play_game();
-        end_game();
+                    if (turnCount > 10) {
+                        return;
+                    }
+                    var userGuess = event.key;
+                    // turnCount++;
+                    var cElement  = document.getElementById("turns");
+                    cElement.innerText = turnCount;
+                    console.log(userGuess);
+                    if (baseSet.includes(userGuess)){
+                        var position = baseSet.indexOf(userGuess);
+                        var dElement = document.getElementById("guess_area");
+                        dElement.innerText = displaySet;
+                        
+                        // checkGame();
+                        // console.log('displaySet? ', displaySet)
+                        // console.log('baseSet? ', baseSet)
+                        // console.log(typeof displaySet)
+                        // console.log(typeof baseSet)
+                        // console.log(displaySet === baseSet);
+                        // console.log(displaySet.includes("___"))
+                        // console.log(displaySet)
+                    }
+                    if (baseSet.includes(userGuess, position + 1)){
+                        turnCount++;
+                        console.log('position after? ', position)
+                        var newPosition = baseSet.indexOf(userGuess,position + 1);
+                        console.log('newPosition? ', newPosition)
+                        displaySet.splice(newPosition, 1, userGuess);
+                        var dElement = document.getElementById("guess_area");
+                        dElement.innerText = displaySet;
+                        }
+                    else {
+                        turnCount++;
+                        var cElement  = document.getElementById("turns");
+                        cElement.innerText = turnCount;
+                    }
+                    }
+            } 
         
 
     // Guessing function
@@ -157,6 +150,20 @@ var baseSet = gameWord.split('');
 
         // If gameWord === baseSet, player wins, add 1 to winCount
             
+        // function checkGame(){
+        //     for (var i = 0; i < displaySet.length; ++i) {
+        //         console.log(baseSet)
+        //         if (displaySet[i] === baseSet[i] && turnCount <= 10){
+        //             var wElement = document.getElementById("text_area");
+        //             wElement.innerText = "You Win!";
+        //         }
+        //         else if (turnCount >= 10 && displaySet[i] !== baseSet[i]){
+        //             var wElement = document.getElementById("text_area");
+        //             wElement.innerText = "You Lose! Play Again?"; 
+        //     }
+
+        // }}
+            
 
             
         // If turnCount > 10, player loses, add 1 to lossCount, ask if player wants to play
@@ -164,6 +171,4 @@ var baseSet = gameWord.split('');
 
     // Restart game function
 
-        // 
-    
-
+ 

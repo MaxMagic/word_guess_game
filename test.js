@@ -58,6 +58,9 @@ var lossCount = 0;
 var wordChoice = Math.floor((Math.random() * 9) + 1);
 var gameWord = words[wordChoice];
 var baseSet = gameWord.split('');
+var wElement = document.getElementById("text_area");
+var dElement = document.getElementById("guess_area");
+var cElement  = document.getElementById("turns");
 
     // Start game function
     
@@ -70,54 +73,94 @@ var baseSet = gameWord.split('');
         
 
         // Split function will separate random word into letters in array
+        // Append "__" to empty array for length of selected word and display "__" array to guess_area
             
     function start_game(){
-        // Append "__" to empty array for length of selected word and display "__" array to guess_area
-            for (var i = 0; i < baseSet.length; i++){
-                displaySet.push("___");
-                var dElement = document.getElementById("guess_area");
-                dElement.innerText = displaySet;
-                var userGuess = event.key;
-                turnCount++;
-                document.onkeyup = function(event) {
-                    if (turnCount >= 10) {
-                        return
-                }
+        for (var i = 0; i < baseSet.length; i++){
+            displaySet.push("___");
+            var dElement = document.getElementById("guess_area");
+            dElement.innerText = displaySet;
+            play_game();
         }}
+
 
     function play_game(){
-        var cElement  = document.getElementById("turns");
-        cElement.innerText = turnCount;
-        console.log(userGuess);
-        if (baseSet.includes(userGuess)){
-            var position = baseSet.indexOf(userGuess);
-            displaySet.splice(position, 1, userGuess);
-            var dElement = document.getElementById("guess_area");
-            dElement.innerText = displaySet;
-        }
-        if (baseSet.includes(userGuess, position + 1)){
-            var newPosition = baseSet.indexOf(userGuess,position + 1);
-            displaySet.splice(newPosition, 1, userGuess);
-            var dElement = document.getElementById("guess_area");
-            dElement.innerText = displaySet;
+        document.onkeyup = function(event) {
+            if (turnCount > 10) {
+                return;
+            } else {
+                var userGuess = event.key;
+                console.log(userGuess);
+                // turnCount++;
+                var cElement = document.getElementById("turns");
+                cElement.innerText = turnCount;
+                if (baseSet.includes(userGuess)){
+                    var position = baseSet.indexOf(userGuess);
+                    displaySet.splice(position, 1, userGuess);
+                    
+                    dElement.innerText = displaySet;
+                    check_game();
+                }
+                if (baseSet.includes(userGuess, position + 1)){
+                    var newPosition = baseSet.indexOf(userGuess,position + 1);
+                    displaySet.splice(newPosition, 1, userGuess);
+                    
+                    dElement.innerText = displaySet;
+                    check_game();
+                } 
+                else {
+                    turnCount++;
+                    
+                    cElement.innerText = turnCount;
+                    check_game();
+                }}}}
+                
+    function check_game(){
+        if (displaySet.join() == baseSet.join() && turnCount <= 10){
+            console.log(displaySet);
+            wElement.innerText = ("You Win!");
+        } else if (turnCount > 10){
+            // var wElement = document.getElementById("text_area");
+            wElement.innerText = ("You Lose! Play Again?");
         } else {
-            turnCount++;
-            var cElement  = document.getElementById("turns");
-            cElement.innerText = turnCount;
+                return;
         }}
+        
+
+
+    // function play_game(){
+    //     var cElement  = document.getElementById("turns");
+    //     cElement.innerText = turnCount;
+    //     console.log(userGuess);
+    //     if (baseSet.includes(userGuess)){
+    //         var position = baseSet.indexOf(userGuess);
+    //         displaySet.splice(position, 1, userGuess);
+    //         var dElement = document.getElementById("guess_area");
+    //         dElement.innerText = displaySet;
+    //     }
+    //     if (baseSet.includes(userGuess, position + 1)){
+    //         var newPosition = baseSet.indexOf(userGuess,position + 1);
+    //         displaySet.splice(newPosition, 1, userGuess);
+    //         var dElement = document.getElementById("guess_area");
+    //         dElement.innerText = displaySet;
+    //     } else {
+    //         turnCount++;
+    //         var cElement  = document.getElementById("turns");
+    //         cElement.innerText = turnCount;
+    //     }}
                 
             
-    function end_game(){
-        if (displaySet === baseSet && turnCount <= 10){
-            var wElement = document.getElementById("text_area");
-            wElement.innerText = "You Win!";
-            } else if (turnCount > 10){
-                var wElement = document.getElementById("text_area");
-                wElement.innerText = "You Lose! Play Again?"; 
-        }}
+    // function end_game(){
+    //     if (displaySet === baseSet && turnCount <= 10){
+    //         var wElement = document.getElementById("text_area");
+    //         wElement.innerText = "You Win!";
+    //         } else if (turnCount > 10){
+    //             var wElement = document.getElementById("text_area");
+    //             wElement.innerText = "You Lose! Play Again?"; 
+    //     }}
 
-        play_game();
-        end_game();
+    //     play_game();
+    //     end_game();
         
 
     // Guessing function
@@ -146,7 +189,7 @@ var baseSet = gameWord.split('');
             //     }
             //     }
 
-        }
+        
         // Save key to variable
         // Compare key to letters in array
         // If key in array, replace "__" with letter, add 1 to turnCount, add letter to guessed_letters
@@ -163,7 +206,4 @@ var baseSet = gameWord.split('');
         // again with button (maybe confirm)
 
     // Restart game function
-
-        // 
-    
-
+ 
