@@ -125,24 +125,37 @@ function arraysEqual(word, dSet) {
     } 
 }
 
-  function winGame (word, dSet){
-      if (_.isEqual(word, dSet)){
-        winCount++;
-        var winElement = document.getElementById("wins");
-        winElement.innerText = winCount;
-        var wElement = document.getElementById("text_box");
-        wElement.innerText = "You Win!";
-      }
-      if (_.isEqual(word, dSet) = false && turnCount >= 10){
-        lossCount++;
-        var lossElement = document.getElementById("losses");
-        lossElement.innerText = lossCount;
-        var wElement = document.getElementById("text_box");
-        wElement.innerText = "You Lose! Press Start Game to play Again!"; 
-      } else {
-          return;
-      }
+function winGame (word, dSet){
+    if (_.isEqual(word, dSet)){
+    winCount++;
+    var winElement = document.getElementById("wins");
+    winElement.innerText = winCount;
+    var wElement = document.getElementById("text_box");
+    wElement.innerText = "You Win!";
     }
+    if (_.isEqual(word, dSet) = false && turnCount >= 10){
+    lossCount++;
+    var lossElement = document.getElementById("losses");
+    lossElement.innerText = lossCount;
+    var wElement = document.getElementById("text_box");
+    wElement.innerText = "You Lose! Press Start Game to play Again!"; 
+    } else {
+        return;
+    }
+}
+
+function clearAll() {
+    var winElement = document.getElementById("wins");
+    winElement.innerText = "";
+    var wElement = document.getElementById("text_box");
+    wElement.innerText = "";
+    var lossElement = document.getElementById("losses");
+    lossElement.innerText = "";
+    var dElement = document.getElementById("guess_area");
+    dElement.innerText = "";
+    var cElement  = document.getElementById("turns");
+    cElement.innerText = "";
+  }
 
 // if (word.includes(userGuess)){
             //     var position = word.indexOf(userGuess);
