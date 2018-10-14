@@ -1,6 +1,11 @@
 @font-face {
     font-family: "BTTF";
-    src: url("BTTF.ttf") format("truetype");
+    src: url("bttf.ttf") format("truetype");
+}
+
+div {
+    font-family: "BTTF";
+    color: white;
 }
 
 body {
