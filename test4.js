@@ -5,11 +5,11 @@ var baseSet;
 var userGuess;
 var displaySet = [];
 var turnCount = 0;
-var winCount = 0;
+var winCount = -1;
 var lossCount = 0;
 
 function startGame(){
-    var gameWord = words[Math.floor((Math.random() * 9) + 1)];
+    var gameWord = words[Math.floor((Math.random() * 10) + 1)];
     var baseSet = gameWord.split('');
     for (var i = 0; i < baseSet.length; i++){
         displaySet.push("___");
